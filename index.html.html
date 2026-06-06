@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Onukwube Amarachi Loveth — RN, BSN, US RN</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2a;
+    --teal: #1a7a6e;
+    --teal-light: #25a99a;
+    --gold: #c8a96e;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --text: #1c2b38;
+    --muted: #6b7f8e;
+    --card-bg: #ffffff;
+    --border: rgba(26,122,110,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(13,27,42,0.97);
+    backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6vw;
+    height: 64px;
+    border-bottom: 1px solid rgba(200,169,110,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 400; letter-spacing: 0.08em;
+    color: var(--gold);
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 6vw 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 80% 50%, rgba(26,122,110,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 10% 80%, rgba(200,169,110,0.08) 0%, transparent 60%);
+  }
+  .hero-text { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 2px;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+    font-weight: 300; line-height: 1.08;
+    color: var(--white);
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .hero-name em { font-style: italic; color: var(--teal-light); }
+  .hero-title {
+    margin-top: 1rem;
+    font-size: 1rem; font-weight: 300; letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.55);
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+  .hero-summary {
+    margin-top: 2rem;
+    font-size: 0.95rem; line-height: 1.8;
+    color: rgba(255,255,255,0.68);
+    max-width: 520px;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 3px;
+    font-size: 0.83rem; letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none; transition: all 0.25s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary { background: var(--teal); color: #fff; border: 1.5px solid var(--teal); }
+  .btn-primary:hover { background: var(--teal-light); border-color: var(--teal-light); }
+  .btn-outline { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+  .btn-outline:hover { background: rgba(200,169,110,0.1); }
+
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; justify-content: flex-end; align-items: center;
+  }
+  .hero-stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    backdrop-filter: blur(6px);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem; font-weight: 600; color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.45); margin-top: 6px;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 90px 6vw; }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--teal); font-weight: 500; margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 300; color: var(--navy);
+    line-height: 1.2;
+  }
+  .section-divider {
+    width: 48px; height: 2px; background: var(--gold);
+    margin-top: 1rem;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--white); }
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 200px 1px 1fr;
+    gap: 0 2rem;
+    padding-bottom: 3rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .timeline-item.visible { opacity: 1; transform: translateY(0); }
+  .timeline-date {
+    text-align: right;
+    padding-top: 4px;
+  }
+  .timeline-date .year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 600; color: var(--teal);
+  }
+  .timeline-date .period {
+    font-size: 0.75rem; color: var(--muted); margin-top: 3px;
+  }
+  .timeline-line {
+    position: relative;
+    display: flex; justify-content: center;
+  }
+  .timeline-line::before {
+    content: ''; position: absolute; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .timeline-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--teal); border: 2px solid var(--white);
+    outline: 2px solid var(--teal);
+    position: relative; z-index: 1; margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .timeline-content { padding-top: 0; }
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600; color: var(--navy);
+  }
+  .timeline-org {
+    font-size: 0.82rem; color: var(--teal); margin: 4px 0 12px;
+    letter-spacing: 0.03em;
+  }
+  .timeline-badge {
+    display: inline-block;
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    background: rgba(26,122,110,0.08); color: var(--teal);
+    border: 1px solid rgba(26,122,110,0.2);
+    padding: 3px 10px; border-radius: 2px; margin-bottom: 12px;
+  }
+  .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .timeline-bullets li {
+    font-size: 0.88rem; line-height: 1.65; color: #445566;
+    padding-left: 16px; position: relative;
+  }
+  .timeline-bullets li::before {
+    content: '–'; position: absolute; left: 0; color: var(--gold);
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--cream); }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .skill-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s;
+  }
+  .skill-card.visible { opacity: 1; transform: translateY(0); }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); }
+  .skill-card-icon {
+    width: 44px; height: 44px; border-radius: 8px;
+    background: rgba(26,122,110,0.1);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+  }
+  .skill-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 600; color: var(--navy);
+    margin-bottom: 1rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    font-size: 0.77rem; color: var(--text);
+    background: var(--cream); border: 1px solid rgba(0,0,0,0.1);
+    padding: 5px 12px; border-radius: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── LICENSES ── */
+  #licenses { background: var(--navy); }
+  #licenses .section-title { color: var(--white); }
+  #licenses .section-eyebrow { color: var(--teal-light); }
+  .licenses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .license-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 1.6rem 1.8rem;
+    backdrop-filter: blur(4px);
+    opacity: 0; transform: translateY(16px);
+    transition: all 0.5s ease;
+  }
+  .license-card.visible { opacity: 1; transform: translateY(0); }
+  .license-card:hover { border-color: rgba(200,169,110,0.4); }
+  .license-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+  .license-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 600; color: var(--white);
+    margin-bottom: 4px;
+  }
+  .license-reg { font-size: 0.78rem; color: var(--gold); margin-bottom: 4px; }
+  .license-year { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+  /* ── EDUCATION & TRAINING ── */
+  #education { background: var(--white); }
+  .edu-training-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .edu-block {}
+  .edu-block-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; color: var(--navy);
+    margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  .edu-card {
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .edu-degree {
+    font-weight: 500; color: var(--navy); font-size: 0.95rem;
+  }
+  .edu-institution {
+    font-size: 0.82rem; color: var(--teal); margin: 4px 0;
+  }
+  .edu-year { font-size: 0.78rem; color: var(--muted); }
+  .training-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .training-list li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.88rem; color: var(--text); padding: 0.8rem 1rem;
+    background: var(--cream); border-radius: 6px;
+    border-left: 3px solid var(--teal);
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--cream); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--white); border-radius: 8px;
+    padding: 1.1rem 1.4rem;
+    border: 1px solid var(--border);
+    font-size: 0.88rem; color: var(--text);
+  }
+  .contact-item-icon {
+    width: 38px; height: 38px; background: rgba(26,122,110,0.1);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-item a { color: var(--teal); text-decoration: none; }
+  .contact-item a:hover { text-decoration: underline; }
+  .contact-availability {
+    background: var(--navy); color: var(--white);
+    border-radius: 10px; padding: 2rem 2.2rem;
+  }
+  .avail-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(37,169,154,0.2); color: var(--teal-light);
+    border: 1px solid rgba(37,169,154,0.3);
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .avail-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--teal-light);
+    animation: pulse 1.5s infinite;
+  }
+  .avail-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; color: var(--white); margin-bottom: 0.75rem;
+  }
+  .avail-text { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(200,169,110,0.2);
+    padding: 2rem 6vw;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 400; color: var(--gold);
+    letter-spacing: 0.06em;
+  }
+  .footer-note { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-right { justify-content: flex-start; }
+    .hero-stat-card { grid-template-columns: repeat(4, 1fr); }
+    .timeline-item { grid-template-columns: 1px 1fr; }
+    .timeline-date { display: none; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .edu-training-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    .hero-stat-card { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Amarachi Loveth</div>
+  <div class="nav-links">
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#licenses">Licenses</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <span class="hero-tag">RN · BSN · US RN</span>
+    <h1 class="hero-name">
+      Onukwube<br><em>Amarachi Loveth</em>
+    </h1>
+    <p class="hero-title">Registered Nurse &amp; AI Healthcare Data Specialist</p>
+    <p class="hero-summary">
+      Dedicated Registered Nurse and AI Data Evaluator with over 7 years of clinical experience across postpartum, pediatric, and general medical-surgical units in Canada and Nigeria. Holding dual nursing licensure and deep subject-matter expertise in healthcare-domain AI annotation and advanced reasoning tasks.
+    </p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn btn-primary">View Experience</a>
+      <a href="#contact" class="btn btn-outline">Contact Me</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-card">
+      <div class="stat-item">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Years Clinical</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Active Licenses</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Countries</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">AI</div>
+        <div class="stat-label">RLHF Expert</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <div class="section-eyebrow">Career History</div>
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="timeline">
+
+    <!-- Scale AI -->
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <div class="year">2023</div>
+        <div class="period">Jan 2023 – Present</div>
+      </div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-role">AI Data Trainer &amp; Healthcare Domain Annotator</div>
+        <div class="timeline-org">Scale AI — Remote</div>
+        <span class="timeline-badge">Remote · AI / ML</span>
+        <ul class="timeline-bullets">
+          <li>Trained and evaluated large language models by labeling and reviewing healthcare and general-domain data points with high accuracy, directly improving model performance.</li>
+          <li>Performed sentiment analysis, entity recognition, and prompt response scoring — applying clinical nursing knowledge to flag medically inaccurate AI outputs.</li>
+          <li>Completed RLHF (Reinforcement Learning from Human Feedback) workflows and ELO-style evaluation tasks to rank and improve AI-generated responses.</li>
+          <li>Collaborated with remote teams to refine annotation guidelines and maintain quality standards across evaluation projects.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Chinook Hospital -->
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <div class="year">2025</div>
+        <div class="period">Feb 2025 – Present</div>
+      </div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-role">Registered Nurse — Postpartum Unit</div>
+        <div class="timeline-org">Chinook Regional Hospital, Lethbridge, Canada</div>
+        <span class="timeline-badge">Full Time · 40 hrs/week · 3–4 Patients</span>
+        <ul class="timeline-bullets">
+          <li>Regularly assess and document maternal vital signs including blood pressure, heart rate, temperature, and oxygen levels.</li>
+          <li>Monitor for signs of postpartum complications such as hemorrhage, deep vein thrombosis (DVT), and infection.</li>
+          <li>Conduct newborn vital sign checks including heart rate, temperature, and respiratory rate; perform APGAR scoring and assess for neonatal distress.</li>
+          <li>Administer prescribed pain relief medications including NSAIDs, opioids, and epidural pain management.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Crowdgen -->
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <div class="year">2021</div>
+        <div class="period">Mar 2021 – Dec 2022</div>
+      </div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-role">AI Evaluation &amp; Quality Analyst</div>
+        <div class="timeline-org">Crowdgen — Remote</div>
+        <span class="timeline-badge">Remote · AI Quality Assurance</span>
+        <ul class="timeline-bullets">
+          <li>Reviewed and rated AI-generated content across multiple evaluation projects, achieving consistently high quality scores.</li>
+          <li>Applied structured feedback frameworks to assess model outputs for accuracy, tone, and relevance across healthcare and general domains.</li>
+          <li>Maintained excellent performance metrics and turnaround times while working fully remote in a fast-paced evaluation environment.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- UNTH Pediatrics -->
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <div class="year">2022</div>
+        <div class="period">Apr 2022 – Jan 2025</div>
+      </div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-role">Staff Nurse — Pediatrics Unit</div>
+        <div class="timeline-org">University of Nigeria Teaching Hospital, Enugu, Nigeria</div>
+        <span class="timeline-badge">Full Time · 40 hrs/week · 8–10 Patients</span>
+        <ul class="timeline-bullets">
+          <li>Monitored vital signs and reported any abnormal changes to the physician promptly.</li>
+          <li>Administered medications, maintained patient records, changed dressings, inserted catheters, and monitored IVs.</li>
+          <li>Worked directly with patients before and after surgical procedures to ensure they received necessary medical attention.</li>
+          <li>Rendered critical and intensive care to children through ECG monitoring.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- UNTH General -->
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <div class="year">2019</div>
+        <div class="period">Aug 2019 – Aug 2020</div>
+      </div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-role">Registered Nurse — General Unit (Medical/Surgical/OB/Peds)</div>
+        <div class="timeline-org">University of Nigeria Teaching Hospital, Enugu, Nigeria</div>
+        <span class="timeline-badge">Full Time · 40 hrs/week · 5–10 Patients</span>
+        <ul class="timeline-bullets">
+          <li>Conducted preoperative assessments including reviewing medical histories, performing physical examinations, and ensuring all necessary preoperative preparations were completed.</li>
+          <li>Assessed patients' surgical risks, allergies, and special considerations to ensure patient safety across medical, surgical, obstetrics, and pediatrics units.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <div class="section-eyebrow">Capabilities</div>
+    <h2 class="section-title">Skills &amp; Expertise</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon">🩺</div>
+      <div class="skill-card-title">Clinical Nursing Skills</div>
+      <div class="skill-tags">
+        <span class="skill-tag">IV Medications &amp; Fluids</span>
+        <span class="skill-tag">Advanced Wound Care</span>
+        <span class="skill-tag">Mechanical Ventilation</span>
+        <span class="skill-tag">Discharge Planning</span>
+        <span class="skill-tag">ECG Monitoring</span>
+        <span class="skill-tag">APGAR Scoring</span>
+        <span class="skill-tag">Vital Signs Assessment</span>
+        <span class="skill-tag">Catheter Insertion</span>
+        <span class="skill-tag">Postpartum Care</span>
+        <span class="skill-tag">Neonatal Assessment</span>
+        <span class="skill-tag">Preoperative Assessment</span>
+        <span class="skill-tag">Pain Management</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🤖</div>
+      <div class="skill-card-title">AI &amp; Data Annotation</div>
+      <div class="skill-tags">
+        <span class="skill-tag">RLHF Workflows</span>
+        <span class="skill-tag">ELO-Style Evaluations</span>
+        <span class="skill-tag">Healthcare AI Annotation</span>
+        <span class="skill-tag">Prompt Response Scoring</span>
+        <span class="skill-tag">AI Safety Evaluation</span>
+        <span class="skill-tag">Sentiment Analysis</span>
+        <span class="skill-tag">Entity Recognition</span>
+        <span class="skill-tag">Hallucination Mitigation</span>
+        <span class="skill-tag">Quality Assurance</span>
+        <span class="skill-tag">Annotation Guidelines</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🌍</div>
+      <div class="skill-card-title">Clinical Specialties</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Postpartum &amp; Maternal Care</span>
+        <span class="skill-tag">Pediatric Nursing</span>
+        <span class="skill-tag">Medical-Surgical</span>
+        <span class="skill-tag">Obstetrics</span>
+        <span class="skill-tag">Critical &amp; Intensive Care</span>
+        <span class="skill-tag">Neonatal Care</span>
+        <span class="skill-tag">DVT Prevention</span>
+        <span class="skill-tag">Hemorrhage Monitoring</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">💻</div>
+      <div class="skill-card-title">Technical &amp; Professional</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Microsoft Office Suite</span>
+        <span class="skill-tag">Remote Collaboration</span>
+        <span class="skill-tag">Clinical Documentation</span>
+        <span class="skill-tag">Feedback Frameworks</span>
+        <span class="skill-tag">Data Quality Review</span>
+        <span class="skill-tag">Cross-Cultural Practice</span>
+        <span class="skill-tag">Patient Records Management</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LICENSES -->
+<section id="licenses">
+  <div class="section-header">
+    <div class="section-eyebrow">Credentials</div>
+    <h2 class="section-title">Licenses &amp; Certifications</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="licenses-grid">
+    <div class="license-card">
+      <div class="license-icon">🇺🇸</div>
+      <div class="license-name">New York Board of Nursing</div>
+      <div class="license-reg">Reg. No: 885624</div>
+      <div class="license-year">Certified 2023</div>
+    </div>
+    <div class="license-card">
+      <div class="license-icon">🇨🇦</div>
+      <div class="license-name">CRNA — Canada</div>
+      <div class="license-reg">Reg. No: 137042</div>
+      <div class="license-year">Active License</div>
+    </div>
+    <div class="license-card">
+      <div class="license-icon">🇳🇬</div>
+      <div class="license-name">Nursing &amp; Midwifery Council of Nigeria</div>
+      <div class="license-reg">Reg. No: 001/171952</div>
+      <div class="license-year">Certified 2016</div>
+    </div>
+    <div class="license-card">
+      <div class="license-icon">🎓</div>
+      <div class="license-name">Bachelor of Nursing Science</div>
+      <div class="license-reg">Madonna University, Nigeria</div>
+      <div class="license-year">2017</div>
+    </div>
+    <div class="license-card">
+      <div class="license-icon">❤️</div>
+      <div class="license-name">Basic Life Support (BLS)</div>
+      <div class="license-reg">Training Certification</div>
+      <div class="license-year">Completed</div>
+    </div>
+    <div class="license-card">
+      <div class="license-icon">🚑</div>
+      <div class="license-name">Advanced Life Support (ALS)</div>
+      <div class="license-reg">Training Certification</div>
+      <div class="license-year">Completed</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & TRAINING -->
+<section id="education">
+  <div class="section-header">
+    <div class="section-eyebrow">Academic &amp; Professional Development</div>
+    <h2 class="section-title">Education &amp; Training</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="edu-training-grid">
+    <div class="edu-block">
+      <div class="edu-block-title">Academic Education</div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of Nursing Science (BSN)</div>
+        <div class="edu-institution">Madonna University, Elele Campus, Rivers State, Nigeria</div>
+        <div class="edu-year">Graduated 2017</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Registered Nurse Certificate</div>
+        <div class="edu-institution">Nursing and Midwifery Council of Nigeria</div>
+        <div class="edu-year">2016</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Registered Nurse — New York Board of Nursing</div>
+        <div class="edu-institution">New York State Education Department</div>
+        <div class="edu-year">2023</div>
+      </div>
+    </div>
+    <div class="edu-block">
+      <div class="edu-block-title">Trainings &amp; Development</div>
+      <ul class="training-list">
+        <li>🌿 Holistic Care Training Program</li>
+        <li>❤️ Basic Life Support (BLS) Training</li>
+        <li>🚑 Advanced Life Support (ALS) Training</li>
+      </ul>
+      <div style="margin-top:1.8rem; padding:1.5rem; background:var(--cream); border-radius:8px; border:1px solid var(--border);">
+        <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:0.6rem;">Dual International Licensure</div>
+        <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;">Amarachi holds active nursing registrations in <strong style="color:var(--navy)">the United States (New York)</strong> and <strong style="color:var(--navy)">Canada (CRNA)</strong>, in addition to her original Nigerian license — enabling seamless practice across international healthcare systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-title">Contact &amp; Availability</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-item-icon">📧</div>
+        <div>
+          <div style="font-size:0.72rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.08em;">Email</div>
+          <a href="mailto:loveonukwube@gmail.com">loveonukwube@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📱</div>
+        <div>
+          <div style="font-size:0.72rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.08em;">Phone</div>
+          <a href="tel:+12502740080">+1 250-274-0080</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🌐</div>
+        <div>
+          <div style="font-size:0.72rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.08em;">Work Mode</div>
+          <span>Available Remotely</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🏥</div>
+        <div>
+          <div style="font-size:0.72rem;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.08em;">Current Position</div>
+          <span>RN – Postpartum, Chinook Regional Hospital</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-availability">
+      <div class="avail-badge">
+        <span class="avail-dot"></span>
+        Available Now
+      </div>
+      <div class="avail-title">Open to Remote AI Opportunities</div>
+      <p class="avail-text">
+        Available for immediate remote start on AI evaluation, annotation, and healthcare-domain data projects. Deep subject-matter expertise in healthcare, obstetrics, pediatrics, and clinical nursing — highly valuable for medical-domain AI tasks.<br><br>
+        References available upon request.
+      </p>
+      <a href="mailto:loveonukwube@gmail.com" class="btn btn-primary" style="margin-top:1.5rem;display:inline-flex;">Send an Email →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Onukwube Amarachi Loveth · RN, BSN, US RN</div>
+  <div class="footer-note">loveonukwube@gmail.com · +1 250-274-0080</div>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, entry.target.dataset.delay || 0);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.timeline-item').forEach((el, i) => {
+    el.dataset.delay = i * 100;
+    observer.observe(el);
+  });
+  document.querySelectorAll('.skill-card').forEach((el, i) => {
+    el.dataset.delay = i * 80;
+    observer.observe(el);
+  });
+  document.querySelectorAll('.license-card').forEach((el, i) => {
+    el.dataset.delay = i * 70;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
